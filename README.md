@@ -2,12 +2,12 @@
 ## Overview
 The purpose of this analysis is to use Machine Learning and Neural Networks to create a binary classifier that is capable of predicting whether applicants will be successful if funded by Alphabet Soup - a charitable organization.  
 
-The analysis was done using Jupyter Notebook's sklearn and tensorflow libraries, and performed on the data set *charity_data.csv*.  
+The analysis was done using Jupyter Notebook's Sci-Kit Learn and TensorFlow libraries, and performed on the data set *charity_data.csv*.  
 
 ## Results
 
 ### Data Preprocessing
-Before training and testing our model, data was processed in order properly run the model.
+Before training and testing our model the data was transformed in order properly run the model.
 
 ***What variable(s) are considered the target(s) for your model?***
 
@@ -17,20 +17,24 @@ The target variable we are intedending to predict is the *IS_SUCCESSFUL* column.
 
 The following columns were used as features for our model:
 
-- AFFILIATION
-- CLASSIFICATION
-- USE_CASE
-- ORGANIZATION
-- STATUS
-- INCOME_AMT
-- SPECIAL_CONSIDERATIONS
-- ASK_AMT
+- APPLICATION_TYPE—*Alphabet Soup application type*
+- AFFILIATION—*Affiliated sector of industry*
+- CLASSIFICATION—*Government organization classification*
+- USE_CASE—*Use case for funding*
+- ORGANIZATION—*Organization type*
+- STATUS—*Active status*
+- INCOME_AMT—*Income classification*
+- SPECIAL_CONSIDERATIONS—*Special consideration for application*
+- ASK_AMT—*Funding amount requested*
 
 ***What variable(s) are neither targets nor features, and should be removed from the input data?***
 
 In order to reduce the number of features for our model, we dropped the following columns:
+
 - EIN
 - NAME
+
+Both columns are identification columns are are unecessary for the analysis.
 
 ### Compiling, Training, and Evaluating the Model
 
@@ -48,7 +52,7 @@ From this we can see that:
 - 30 neurons were used in the second hidden layer
 - and 1 neuron was used in the output layer
 
-2 hidden layers were used, and 2 activation functions were used: relu and sigmoid.
+2 hidden layers were used, and 2 activation functions were used: ReLu in the hidden layers and Sigmoid in the output layer.
 
 The neural network ran for 50 epochs.
 
@@ -59,14 +63,14 @@ The target accuracy for the model was 75%. Unfortunatley the target model perfor
 <p align="center">
 <img src=https://github.com/smanowar/Neural_Network_Charity_Analysis/blob/main/images/accuracy_original.PNG> 
 </p>
-<br><br>
-To try and achieve target accuracy we attempted the following steps:
 
+To try and achieve target accuracy we attempted the following steps:
+<br><br>
 **1. Drop additional features**
 
 To try and increase accuracy, in addition to dropping the *EIN* and *NAME* columns we also dropped the *USE_CASE* column, and increased the neurons to 100 neurons in the first hidden layer and 50 neurons in the second hidden layer.
 
-<p align="left">
+<p align="center">
 <img src=https://github.com/smanowar/Neural_Network_Charity_Analysis/blob/main/images/nn_AddNeurons.PNG> 
 </p>
 
@@ -103,7 +107,6 @@ This decreased the accuracy of our model to:
 </p>
 
 ## Summary
-The overall results of our Neural Network model unfortunatley did not reach target accuracy. If we were to try the analysis again using a different model, a model that could solve the classification problem similarly to the Neural Network problem is the Logistic Regression model.
+The overall results of our Neural Network model unfortunatley did not reach target accuracy. The initial run of our model achieved an accuracy of 73%, and after our three attempts to increase accuracy to 75% the accuracy of the model decresed to 47%. From this we can see that a better way to improve accuracy might include increasing our dataset, increasing the epochs, or using a different machine learning model. 
 
- -"This sigmoid curve is the exact same curve used in the sigmoid activation function of a neural network. In fact, a basic neural network using the sigmoid activation function is effectively a logistic regression model"
--"Datasets with thousands of data points, or datasets with complex features, may overwhelm the logistic regression model, while a deep learning model can evaluate every interaction within and across neurons."
+If we were to try the analysis again using a different model, a model that could solve the classification problem similarly to out Neural Network model is the Random Forest Classifier. The Random Forest algorithm will serve the same purpose as the Neural Network model - predicting whether or not a charitable donation will be successful or not - while also potentially increasing accuracy as the Random Forest algorithm reduces overfitting.
